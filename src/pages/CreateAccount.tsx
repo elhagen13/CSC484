@@ -1,6 +1,11 @@
 import { Button } from "@/components/ui/button"
+import { useNavigate } from 'react-router-dom';
 
 function CreateAccount(){
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/create-account/profile')
+    }
     return(
         <div style={{width: '100%', height: '100%', fontFamily: 'Inter',
             display: 'flex', justifyContent: 'center', alignItems: 'center',
@@ -18,7 +23,7 @@ function CreateAccount(){
             </form>
             <div style={{width:'100%', alignItems:'flex-end', display: 'flex', flexDirection: 'column', gap:"10px"}}>
                 <Button style={{backgroundColor: '#EFCA47', borderRadius:'30px', 
-                boxShadow:'2px 4px 10px rgba(0, 0, 0, 0.2)', fontWeight: 'bold', width: '100px'}} >
+                boxShadow:'2px 4px 10px rgba(0, 0, 0, 0.2)', width: '100px'}} >
                     create
                 </Button>
             </div>

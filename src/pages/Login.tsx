@@ -23,9 +23,9 @@ function Login(){
             <input type='password' style={{backgroundColor:'#F3F3F3', height:'50px', borderRadius:'30px', paddingLeft:'25px'}}/>
         </form>
         <div style={{width:'100%', alignItems:'flex-end', display: 'flex', flexDirection: 'column', gap:"10px"}}>
-            <a href='/createAccount'>new user?</a>
+            <a href='/create-account'>new user?</a>
             <Button onClick={handleClick} style={{backgroundColor: '#EFCA47', borderRadius:'30px', 
-            boxShadow:'2px 4px 10px rgba(0, 0, 0, 0.2)', fontWeight: 'bold', width: '100px'}} >
+            boxShadow:'2px 4px 10px rgba(0, 0, 0, 0.2)', width: '100px'}} >
                 login
             </Button>
         </div>

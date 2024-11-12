@@ -18,7 +18,7 @@ function Welcome(){
             </text>
             <img src='/people.png' style={{height:'250px'}}/>
             <Button style={{backgroundColor: '#EFCA47', borderRadius:'30px', 
-            boxShadow:'2px 4px 10px rgba(0, 0, 0, 0.2)', fontWeight: 'bold'}} onClick={handleClick}>
+            boxShadow:'2px 4px 10px rgba(0, 0, 0, 0.2)'}} onClick={handleClick}>
                 Get Started →
             </Button>
 
