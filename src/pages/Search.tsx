@@ -1,4 +1,4 @@
-function Home(){
+function Search(){
     return(
         <div style={{width: '100%', height: '100%'}}>
 
@@ -6,4 +6,5 @@ function Home(){
     )
 
 }
-export default Home
+export default Search
+export {}
