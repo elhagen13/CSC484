@@ -74,3 +74,24 @@
     @apply bg-background text-foreground;
   }
 }
+
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/inter/Inter_18pt-Black.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+/*
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/inter/Inter_18pt-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+*/
+@font-face {
+  font-family: 'Inter';
+  src: url('./assets/fonts/inter/Inter_18pt-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
