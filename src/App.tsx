@@ -31,7 +31,7 @@ const AppContent = () => {
   ];
 
   return (
-    <div style={{ width: '500px', height: '100vh', borderColor: 'black', borderWidth: '2px' }}>
+    <div style={{ width: '500px', height: '100vh', borderColor: 'black', borderWidth: '2px', overflow:'scroll'}}>
       {!noLayoutComponentsPaths.includes(location.pathname) && <Header />}
 
       <Routes>
@@ -44,7 +44,7 @@ const AppContent = () => {
         <Route path="/create-account/interests" element={<Interests />} />
 
         {/* Navbar/ main pages */}
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home interests={[]}/>} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />} />

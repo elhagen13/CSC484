@@ -755,4 +755,4 @@ export const fakeData = [
         ]
     }
   ];
-  
+  export default fakeData
