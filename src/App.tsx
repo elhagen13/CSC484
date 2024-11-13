@@ -24,10 +24,10 @@ function App() {
           {/* auth & account reaction */}
           <Route path="/" element={<Welcome />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/createAccount" element={<CreateAccount />} />
-          <Route path="/createAccount/profile-photo" element={<ProfilePhoto />} />
-          <Route path="/createAccount/bio" element={<Bio />} />
-          <Route path="/createAccount/interests" element={<Interests />} />
+          <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/create-account/profile-photo" element={<ProfilePhoto />} />
+          <Route path="/create-account/bio" element={<Bio />} />
+          <Route path="/create-account/interests" element={<Interests />} />
 
           {/* Navbar/ main pages */}
           <Route path="/home" element={<Home />} />
