@@ -47,5 +47,3 @@ function ProfilePhoto(){
     )
 }
 export default ProfilePhoto
-export {}
-

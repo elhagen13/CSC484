@@ -7,4 +7,3 @@ function EventConfirmation(){
 
 }
 export default EventConfirmation
-export {}

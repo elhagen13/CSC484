@@ -7,4 +7,3 @@ function Contacts(){
 
 }
 export default Contacts
-export {}

@@ -7,4 +7,3 @@ function UserMessage(){
 
 }
 export default UserMessage
-export {}
