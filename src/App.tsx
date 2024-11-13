@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login"
 import CreateAccount from "./pages/CreateAccount"
@@ -15,8 +15,18 @@ import EventConfirmation from "./pages/EventConfirmation";
 import EventAttendees from "./pages/EventAttendees";
 import UserProfile from "./pages/UserProfile";
 import UserMessage from "./pages/UserMessage";
+import NavigationBar from "@/components/layout/NavigationBar";
 
 function App() {
+  const hideNavbarPaths = [
+    "/",
+    "/login",
+    "/create-account",
+    "/create-account/profile-photo",
+    "/create-account/bio",
+    "/create-account/interests",
+  ];
+
   return (
     <div style={{width: '500px', height: '100vh', borderColor:'black', borderWidth: '2px'}}>
       <Router>
@@ -44,6 +54,8 @@ function App() {
           <Route path="/user/:userId/profile" element={<UserProfile />} />
           <Route path="/user/:userId/message" element={<UserMessage />} />
         </Routes>
+
+        {!hideNavbarPaths.includes(window.location.pathname) && <NavigationBar />}
       </Router>
     </div>
   );
