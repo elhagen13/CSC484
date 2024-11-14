@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import fakePeople, {Contact} from "@/fakePeople";
 import SearchBar from "@/components/ui/search-bar";
+import UserProfile from "@/pages/UserProfile";
 
 const ContactsPage = () => {
   const navigate = useNavigate();
@@ -36,11 +37,11 @@ const ContactsPage = () => {
       flexDirection: 'column', gap: '20px', marginTop: '20px'
     }}>
       <div style={{
-        width: '100%', textAlign: 'right'
+        width: '100%', textAlign: 'left'
       }}>
         <div style={{
-          width: '100%', height: '40px', color: 'white', fontSize: '30px',
-          fontFamily: 'Inter', fontWeight: '900', wordWrap: 'break-word'
+          width: '100%', height: '50px', color: 'black', fontSize: '40px',
+          fontFamily: 'Inter', fontWeight: '900'
         }}>
           Contacts
         </div>
@@ -90,7 +91,7 @@ const ContactsPage = () => {
                       onClick={() => navigateToProfile(contact)}
                       variant="outline"
                       style={{
-                        flex: 1, height: '32px', color: 'white', minWidth: 0, padding: '0 8px'
+                        flex: 1, height: '32px', color: 'white', minWidth: 0, padding: '0 8px', backgroundColor: '#800000'
                       }}
                     >
                       Profile
@@ -146,7 +147,7 @@ const ContactsPage = () => {
                   onClick={() => navigateToProfile(contact)}
                   variant="outline"
                   style={{
-                    height: '32px', padding: '0 12px', color: 'white'
+                    height: '32px', padding: '0 12px', color: 'white', backgroundColor: '#800000'
                   }}
                 >
                   Profile
