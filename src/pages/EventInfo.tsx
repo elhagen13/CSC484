@@ -1,12 +1,13 @@
 "use client";
 
-import { useParams } from "react-router-dom";
-import { Card } from "@/components/ui/card";
-import { MapPin } from "lucide-react";
-import fakeData from "../fakeData";
-import fakePeople from "../fakePeople";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Button } from "@/components/ui/button";
+import { useParams } from "react-router-dom"; 
+import { Card } from "@/components/ui/card"; 
+import { MapPin } from "lucide-react"; 
+import fakeData from "../fakeData"; 
+import fakePeople from "../fakePeople"; 
+import { ScrollArea } from "@/components/ui/scroll-area"; 
+import { Button } from "@/components/ui/button"; 
+import { Link } from "react-router-dom"; // Import Link for routing
 
 interface Event {
   id: number;
@@ -23,6 +24,7 @@ interface Attendee {
   bio: string;
   lastClicked: Date | null;
   avatar: JSX.Element;
+  id: number; // Add id to Attendee interface
 }
 
 function EventInfoPage() {
@@ -42,16 +44,16 @@ function EventInfoPage() {
 
   // Sort attendees first by lastClicked, then alphabetically by last name and first name
   const sortedAttendees = fakePeople
-    .slice() // Create a shallow copy of the array
+    .slice() 
     .sort((a, b) => {
       const lastClickedA = a.lastClicked ? a.lastClicked.getTime() : -Infinity;
       const lastClickedB = b.lastClicked ? b.lastClicked.getTime() : -Infinity;
-      const lastClickedCompare = lastClickedB - lastClickedA; // Most recent first
+      const lastClickedCompare = lastClickedB - lastClickedA;
       if (lastClickedCompare !== 0) return lastClickedCompare;
 
       const nameA = `${a.lastName.toLowerCase()} ${a.firstName.toLowerCase()}`;
       const nameB = `${b.lastName.toLowerCase()} ${b.firstName.toLowerCase()}`;
-      return nameA.localeCompare(nameB); // Alphabetical sorting
+      return nameA.localeCompare(nameB);
     });
 
   return (
@@ -123,8 +125,8 @@ function EventInfoPage() {
               {/* Avatar with dark grey circular background */}
               <div style={{
                 marginRight: "15px",
-                backgroundColor: "#333", // Dark grey background for avatar
-                borderRadius: "50%", // Circular shape
+                backgroundColor: "#333",
+                borderRadius: "50%", 
                 padding: "10px",
                 display: "flex",
                 alignItems: "center",
@@ -132,8 +134,8 @@ function EventInfoPage() {
                 width: "50px",
                 height: "50px",
               }}>
-                <div style={{ width: "30px", height: "30px", color: "#EFCA47",marginTop: "4px", marginLeft: "3px"}}>
-                  {attendee.avatar} {/* Avatar icon color now matches button color */}
+                <div style={{ width: "30px", height: "30px", color: "#EFCA47", marginTop: "5px", marginLeft: "3px"}}>
+                  {attendee.avatar}
                 </div>
               </div>
 
@@ -142,32 +144,35 @@ function EventInfoPage() {
                 <div style={{ color: "#333", fontWeight: "bold", marginBottom: "5px" }}>
                   {attendee.firstName} {attendee.lastName}
                 </div>
-                <div style={{ color: "#555", fontSize: "14px", marginBottom: "10px" }}>
+                <div style={{ color: "#555", fontSize: "14px", marginBottom: "10px", marginRight: "5px" }}>
                   Interests: {attendee.interests.join(", ")}
                 </div>
               </div>
 
               {/* Attendee Buttons - Stacked vertically on the right */}
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                {/* Profile Button with Link */}
+                <Link to={`/user/${attendee.id}/profile`} style={{ textDecoration: "none" }}>
+                  <Button
+                    style={{
+                      backgroundColor: "#EFCA47",
+                      borderRadius: "5px",
+                      boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
+                      padding: "5px 10px",
+                      marginBottom: "5px",
+                      width: "100px", // Ensure both buttons have the same width
+                    }}
+                  >
+                    Profile
+                  </Button>
+                </Link>
                 <Button
                   style={{
-                    backgroundColor: "#EFCA47", // Same as RSVP button color
+                    backgroundColor: "#EFCA47",
                     borderRadius: "5px",
                     boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
                     padding: "5px 10px",
-                    marginBottom: "5px",
-                    width: "100px", // Ensure both buttons have the same width
-                  }}
-                >
-                  Profile
-                </Button>
-                <Button
-                  style={{
-                    backgroundColor: "#EFCA47", // Same as RSVP button color
-                    borderRadius: "5px",
-                    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-                    padding: "5px 10px",
-                    width: "100px", // Ensure both buttons have the same width
+                    width: "100px", 
                   }}
                 >
                   Message
