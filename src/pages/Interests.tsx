@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
+import TopHeader from "@/components/TopHeader";
 
 function Interests() {
   const navigate = useNavigate();
@@ -13,38 +14,19 @@ function Interests() {
   };
   return (
     <div
-      style={{width: "100%",
+      style={{
+        width: "100%",
         height: "100%",
-        padding: 10,
-        background: "white",
         flexDirection: "column",
-        justifyContent: "flex-start",
         alignItems: "center",
-        gap: 10,
         display: "inline-flex",
       }}
     >
+      <TopHeader></TopHeader>
       <div
         style={{
-          alignSelf: "stretch",
-          height: 100,
-          paddingLeft: 20,
-          paddingRight: 20,
-          background: "#FFF5D0",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          gap: 10,
-          display: "inline-flex",
-        }}
-      >
-        <div style={{ width: 78, height: 61, position: "relative" }}>
-          <img src="/logo.svg" />
-        </div>
-      </div>
-      <div
-        style={{
-          width: 335,
-          height: 540,
+          width: 330,
+          height: 704,
           padding: 10,
           borderRadius: 1,
           overflow: "hidden",
@@ -254,12 +236,12 @@ function Interests() {
       <div
         style={{
           width: "100%",
-          height: 100,
+          height: 139,
           paddingLeft: 20,
           paddingRight: 20,
           paddingTop: 10,
           paddingBottom: 10,
-          background: "#FFF5D0",
+          background: "#FFFAEA",
           borderRadius: 20,
           overflow: "hidden",
           justifyContent: "flex-end",
