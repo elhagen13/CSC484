@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Search from "./pages/Search";
 import EventConfirmation from "./pages/EventConfirmation";
+import EventInfo from "./pages/EventInfo"
 import EventAttendees from "./pages/EventAttendees";
 import UserProfile from "./pages/UserProfile";
 import UserMessage from "./pages/UserMessage";
@@ -67,6 +68,9 @@ const AppContent = () => {
         {/* user routes */}
         <Route path="/user/:userId/profile" element={<UserProfile />} />
         <Route path="/user/:userId/message" element={<UserMessage />} />
+
+        {/* dynamicly routing eventinfo page*/}
+        <Route path="/event/:eventId" element={<EventInfo/>} />
       </Routes>
 
       {!noLayoutComponentsPaths.includes(location.pathname) && (

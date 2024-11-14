@@ -8,6 +8,8 @@ import * as React from "react";
 import fakeData from "../fakeData";
 import { useToast } from "@/components/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
+import { Link } from "react-router-dom"; // Use Link from react-router-dom
+import { Card } from "@/components/ui/card"; // Assuming shadcn UI provides a 'Card' component
 
 // Define the structure of an event
 interface Event {
@@ -69,7 +71,12 @@ function SearchPage() {
         value={query}
         onChange={handleSearch}
         placeholder="Search events by name"
-        style={{ width: "100%", padding: "10px", borderRadius: "8px", color: "light grey"}}
+        style={{
+          width: "100%",
+          padding: "10px",
+          borderRadius: "8px",
+          color: "light grey",
+        }}
       />
 
       {/* Scrollable Events */}
@@ -84,73 +91,94 @@ function SearchPage() {
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           {filteredEvents.map((event) => (
-            <div
+            <Link
               key={event.id}
-              style={{
-                display: "flex",
-                justifyContent: "flex-start",
-                alignItems: "center",
-                border: "1px solid #D1D1D1",
-                padding: "20px",
-                borderRadius: "10px",
-              }}
+              to={`/event/${event.id}`} // Link to event details
+              style={{ textDecoration: "none" }}
             >
-              {/* Event Details */}
-              <div style={{ textAlign: "left", flex: 1 }}>
-                {/* Smaller subheading for Date and Time */}
-                <div
-                  style={{
-                    fontSize: "12px",
-                    color: "#A0A0A0",
-                    marginBottom: "1px",
-                  }}
-                >
-                  {event.date} @ {event.time}
-                </div>
-
-                {/* Event Title */}
-                <div style={{ fontWeight: "bold", fontSize: "18px" }}>
-                  {event.eventName}
-                </div>
-
-                {/* Location with MapPin icon */}
-                <div
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    color: "#7D7D7D",
-                    fontSize: "14px",
-                  }}
-                >
-                  <MapPin
-                    color="#B2B2B2"
-                    height="14px"
-                    style={{ marginRight: "0px" }}
-                  />
-                  <div>{event.location}</div>
-                </div>
-              </div>
-
-              {/* RSVP Button */}
-              <Button
-                onClick={() => {
-                  toast({
-                    title: "Success!",
-                    description: `You RSVP-ed for ${event.eventName}`,
-                    action: (
-                      <ToastAction altText="you did it">Undo</ToastAction>
-                    ),
-                  });
-                }}
+              {/* Card for each event */}
+              <Card
+                className="event-card"
                 style={{
-                  backgroundColor: "#EFCA47",
-                  borderRadius: "5px",
-                  padding: "8px 16px",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  border: "1px solid #D1D1D1",
+                  padding: "20px",
+                  borderRadius: "10px",
+                  transition: "background-color 0.3s, transform 0.2s, color 0.3s",
                 }}
               >
-                RSVP
-              </Button>
-            </div>
+                {/* Event Details */}
+                <div style={{ textAlign: "left", flex: 1 }}>
+                  {/* Smaller subheading for Date and Time */}
+                  <div
+                    style={{
+                      fontSize: "12px",
+                      color: "#A0A0A0",
+                      marginBottom: "1px",
+                    }}
+                  >
+                    {event.date} @ {event.time}
+                  </div>
+
+                  {/* Event Title */}
+                  <div style={{ fontWeight: "bold", fontSize: "18px" }}>
+                    {event.eventName}
+                  </div>
+
+                  {/* Location with MapPin icon */}
+                  <div
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      color: "#7D7D7D",
+                      fontSize: "14px",
+                    }}
+                  >
+                    <MapPin
+                      color="#B2B2B2"
+                      height="14px"
+                      style={{ marginRight: "0px" }}
+                    />
+                    <div>{event.location}</div>
+                  </div>
+                </div>
+
+                {/* RSVP Button */}
+                <Button
+                  onClick={() => {
+                    toast({
+                      title: "Success!",
+                      description: `You RSVP-ed for ${event.eventName}`,
+                      action: (
+                        <ToastAction altText="you did it">Undo</ToastAction>
+                      ),
+                    });
+                  }}
+                  style={{
+                    backgroundColor: "#EFCA47",
+                    borderRadius: "5px",
+                    padding: "8px 16px",
+                  }}
+                >
+                  RSVP
+                </Button>
+              </Card>
+
+              {/* Hover effect */}
+              <style>{`
+                .event-card:hover {
+                  background-color: #f0f0f0;
+                  cursor: pointer;
+                  transform: scale(1.02); /* Reduced scaling */
+                  color: #333; /* Change text color on hover */
+                }
+                .event-card:hover div {
+                  color: #333; /* Ensure text color changes */
+                }
+              `}</style>
+            </Link>
           ))}
         </div>
       </ScrollArea>
