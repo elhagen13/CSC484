@@ -1,11 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import Home from "./pages/Home";
 import Contacts from "./pages/Contacts";
-import Bio from "./pages/Bio";
 import ProfilePhoto from "./pages/ProfilePhoto";
 import Interests from "./pages/Interests";
 import Profile from "./pages/Profile";
@@ -17,6 +21,7 @@ import UserProfile from "./pages/UserProfile";
 import UserMessage from "./pages/UserMessage";
 import Header from "@/components/layout/Header";
 import NavigationBar from "@/components/layout/NavigationBar";
+import { Toaster } from "./components/ui/toaster";
 
 const AppContent = () => {
   const location = useLocation();
@@ -33,25 +38,30 @@ const AppContent = () => {
   return (
     <div style={{ width: '500px', height: '100vh', backgroundColor: 'white', color: 'black', borderColor: 'black', borderWidth: '2px', overflow:'scroll'}}>
       {!noLayoutComponentsPaths.includes(location.pathname) && <Header />}
-
+      <Toaster />
       <Routes>
         {/* auth & account creation routes */}
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create-account" element={<CreateAccount />} />
-        <Route path="/create-account/profile-photo" element={<ProfilePhoto />} />
-        <Route path="/create-account/bio" element={<Bio />} />
+        <Route
+          path="/create-account/profile-photo"
+          element={<ProfilePhoto />}
+        />
         <Route path="/create-account/interests" element={<Interests />} />
 
         {/* Navbar/ main pages */}
-        <Route path="/home" element={<Home interests={[]}/>} />
+        <Route path="/home" element={<Home interests={[]} />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/edit" element={<EditProfile />} />
         <Route path="/search" element={<Search />} />
 
         {/* event routes */}
-        <Route path="/event/:eventId/confirmation" element={<EventConfirmation />} />
+        <Route
+          path="/event/:eventId/confirmation"
+          element={<EventConfirmation />}
+        />
         <Route path="/event/:eventId/attendees" element={<EventAttendees />} />
 
         {/* user routes */}
@@ -59,7 +69,9 @@ const AppContent = () => {
         <Route path="/user/:userId/message" element={<UserMessage />} />
       </Routes>
 
-      {!noLayoutComponentsPaths.includes(location.pathname) && <NavigationBar />}
+      {!noLayoutComponentsPaths.includes(location.pathname) && (
+        <NavigationBar />
+      )}
     </div>
   );
 };

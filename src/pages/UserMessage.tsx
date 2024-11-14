@@ -1,9 +1,4 @@
-function UserMessage(){
-    return(
-        <div style={{width: '100%', height: '100%'}}>
-
-        </div>
-    )
-
+function UserMessage() {
+  return <div style={{ width: "100%", height: "100%" }}></div>;
 }
-export default UserMessage
+export default UserMessage;
