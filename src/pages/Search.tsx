@@ -136,7 +136,7 @@ function SearchPage() {
                 onClick={() => {
                   toast({
                     title: "Success!",
-                    description: "You successfully RSVP-ed",
+                    description: `You RSVP-ed for ${event.eventName}`,
                     action: (
                       <ToastAction altText="you did it">Undo</ToastAction>
                     ),
