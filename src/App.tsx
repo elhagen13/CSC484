@@ -31,7 +31,7 @@ const AppContent = () => {
   ];
 
   return (
-    <div style={{ width: '500px', height: '100vh', borderColor: 'black', borderWidth: '2px', overflow:'scroll'}}>
+    <div style={{ width: '500px', height: '100vh', backgroundColor: 'white', color: 'black', borderColor: 'black', borderWidth: '2px', overflow:'scroll'}}>
       {!noLayoutComponentsPaths.includes(location.pathname) && <Header />}
 
       <Routes>

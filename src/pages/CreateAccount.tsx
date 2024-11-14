@@ -11,7 +11,7 @@ function CreateAccount(){
             display: 'flex', justifyContent: 'center', alignItems: 'center',
             flexDirection: 'column', gap:'30px', padding:'80px'
         }}>
-            <text style={{fontWeight: 'bolder', fontSize: '30px', width:'100%',
+            <text style={{fontWeight: 'bolder', fontSize: '30px', color: 'black', width:'100%',
                     textAlign:'left'}}>
                 CREATE <br/> ACCOUNT
             </text>
