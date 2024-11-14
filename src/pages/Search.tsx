@@ -1,16 +1,15 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { MapPin } from "lucide-react";
+import {MapPin} from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import * as React from "react";
 import fakeData from "../fakeData";
 import { useToast } from "@/components/hooks/use-toast";
-import { Search, MessageCircle } from "lucide-react";
 import { ToastAction } from "@/components/ui/toast";
 import { Link } from "react-router-dom"; // Use Link from react-router-dom
-import { Card } from "@/components/ui/card"; // Assuming shadcn UI provides a 'Card' component
+import { Card } from "@/components/ui/card";
+import SearchBar from "@/components/ui/search-bar"; // Assuming shadcn UI provides a 'Card' component
 
 // Define the structure of an event
 interface Event {
@@ -67,23 +66,11 @@ function SearchPage() {
       >
         Find An Event Near You!
       </div>
-      <div style={{
-        position: 'relative'
-      }}>
-        <Search style={{
-          position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
-          color: '#fff', height: '16px', width: '16px'
-        }} />
-        <Input
-          value={query}
-          onChange={handleSearch}
-          placeholder="Search events near you"
-          style={{
-            width: '100%', paddingLeft: '40px', paddingRight: '16px', color: "whitesmoke",
-            paddingTop: '8px', paddingBottom: '8px', borderRadius: '8px'
-          }}
-        />
-      </div>
+      <SearchBar
+        handleSearch={handleSearch}
+        query={query}
+        placeholder={"Search events by name..."}
+      />
 
       {/* Scrollable Events */}
       <ScrollArea
