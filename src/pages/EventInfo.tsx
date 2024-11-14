@@ -2,6 +2,7 @@
 
 import { useParams } from "react-router-dom"; 
 import { Card } from "@/components/ui/card"; 
+import {useNavigate } from "react-router-dom";
 import { MapPin } from "lucide-react"; 
 import fakeData from "../fakeData"; 
 import fakePeople from "../fakePeople"; 
@@ -28,6 +29,7 @@ interface Attendee {
 }
 
 function EventInfoPage() {
+  const navigate = useNavigate();
   const { eventId } = useParams();
   const eventID = parseInt(eventId as string);
 
@@ -40,6 +42,10 @@ function EventInfoPage() {
 
   if (!event) {
     return <div>Event not found!</div>;
+  }
+
+  const handleMessage = (id : Number) => {
+    navigate(`/user/${id}/message`);
   }
 
   // Sort attendees first by lastClicked, then alphabetically by last name and first name
@@ -174,6 +180,7 @@ function EventInfoPage() {
                     padding: "5px 10px",
                     width: "100px", 
                   }}
+                  onClick={() => {handleMessage(attendee.id)}}
                 >
                   Message
                 </Button>
