@@ -112,7 +112,7 @@ function Home({ interests }: { interests: string[] }){
                               bottom: '30px', padding: '0px 20px', height: 'auto',
                               boxShadow: '0px 3px 5px rgba(0, 0, 0, 0.3)'}} onClick={() => handleClick(event.id)}>
                               <p style={{ fontSize: '10px', fontWeight: 'bold', color: 'white'}}>
-                                rsvp
+                                RSVP
                               </p>
                             </Button>
                           </div>
