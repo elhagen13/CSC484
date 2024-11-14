@@ -1,6 +1,19 @@
-import {Citrus, Pi, Pyramid, Satellite, Scale, Server, Shrub, Squirrel, User, UtilityPole, Wine} from "lucide-react";
+import {
+  Citrus, PartyPopper,
+  Pi,
+  Puzzle,
+  Pyramid,
+  Satellite,
+  Scale,
+  Server,
+  Shrub,
+  Squirrel,
+  User,
+  UtilityPole,
+  Wine
+} from "lucide-react";
 
-interface Contact {
+export interface Contact {
     id: number;
     firstName: string;
     lastName: string;
@@ -179,7 +192,7 @@ export const fakePeople: Contact[] = [
       interests: ["Technology", "Sports", "Arts"],
       bio: "adventure lover",
       lastClicked: new Date(),
-      avatar: <User />
+      avatar: <PartyPopper />
     },
     {
       id: 1,
@@ -188,7 +201,7 @@ export const fakePeople: Contact[] = [
       interests: ["Dance", "Arts", "Cooking"],
       bio: "adventure lover",
       lastClicked: new Date(),
-      avatar: <User />
+      avatar: <Puzzle />
     }
   ];
   
