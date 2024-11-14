@@ -14,7 +14,6 @@ function ProfilePhoto() {
         width: "100%",
         height: "100%",
         padding: 10,
-        background: "black",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "center",
@@ -50,7 +49,7 @@ function ProfilePhoto() {
           </div>
         </div>
       </div>
-      <div style={{ width: "100%", height: 38, background: "black" }} />
+      <div style={{ width: "100%", height: 38 }} />
       <div
         style={{
           width: 330,
@@ -67,7 +66,6 @@ function ProfilePhoto() {
           style={{
             width: 167,
             height: 52,
-            color: "white",
             fontSize: 36,
             fontFamily: "Inter",
             fontWeight: "900",
@@ -108,7 +106,7 @@ function ProfilePhoto() {
         >
           <text>bio:</text>
           <input
-            type="password"
+            type="text"
             style={{
               backgroundColor: "#F3F3F3",
               height: "50px",
