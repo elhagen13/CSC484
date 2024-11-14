@@ -55,7 +55,7 @@ function SearchPage() {
         style={{
           width: "100%",
           height: 40,
-          color: "white",
+          color: "black",
           fontSize: 30,
           fontFamily: "Inter",
           fontWeight: "900",
@@ -69,7 +69,7 @@ function SearchPage() {
         value={query}
         onChange={handleSearch}
         placeholder="Search events by name"
-        style={{ width: "100%", padding: "10px", borderRadius: "8px" }}
+        style={{ width: "100%", padding: "10px", borderRadius: "8px", color: "light grey"}}
       />
 
       {/* Scrollable Events */}
@@ -125,7 +125,7 @@ function SearchPage() {
                   <MapPin
                     color="#B2B2B2"
                     height="14px"
-                    style={{ marginRight: "5px" }}
+                    style={{ marginRight: "0px" }}
                   />
                   <div>{event.location}</div>
                 </div>

@@ -13,11 +13,10 @@ function Interests() {
   };
   return (
     <div
-      style={{
-        width: "100%",
+      style={{width: "100%",
         height: "100%",
         padding: 10,
-        background: "black",
+        background: "white",
         flexDirection: "column",
         justifyContent: "flex-start",
         alignItems: "center",
@@ -60,7 +59,7 @@ function Interests() {
           style={{
             width: 281,
             height: 40,
-            color: "white",
+            color: "black",
             fontSize: 36,
             fontFamily: "Inter",
             fontWeight: "900",
@@ -260,7 +259,7 @@ function Interests() {
           paddingRight: 20,
           paddingTop: 10,
           paddingBottom: 10,
-          background: "#FFFAEA",
+          background: "#FFF5D0",
           borderRadius: 20,
           overflow: "hidden",
           justifyContent: "flex-end",
