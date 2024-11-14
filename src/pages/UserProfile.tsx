@@ -16,34 +16,60 @@ function UserProfile() {
   }
 
   return (
-    <div style={{ padding: "20px", display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+      }}
+    >
       <div style={{ display: "flex", alignItems: "center" }}>
-        <div style={{
-          backgroundColor: "#333",
-          borderRadius: "50%",
-          padding: "10px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "70px",
-          height: "70px",
-          marginRight: "20px",
-        }}>
-          <User size={50} color="#EFCA47" /> {/* Use the size prop to adjust avatar size */}
+        <div
+          style={{
+            borderRadius: "50%",
+            padding: "10px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "70px",
+            height: "70px",
+            marginRight: "20px",
+          }}
+        >
+          {user.avatar}
         </div>
         <div style={{ fontSize: "36px", fontWeight: "bold", color: "#333" }}>
           {user.firstName} {user.lastName}
         </div>
       </div>
 
-      <div style={{ fontSize: "20px", fontWeight: "bold", color: "#333", marginTop: "20px", display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          fontSize: "20px",
+          fontWeight: "bold",
+          color: "#333",
+          marginTop: "20px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         Interests:
         <div style={{ fontSize: "16px", color: "#555", marginLeft: "10px" }}>
           {user.interests.join(", ")}
         </div>
       </div>
 
-      <div style={{ fontSize: "20px", fontWeight: "bold", color: "#333", marginTop: "20px", display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          fontSize: "20px",
+          fontWeight: "bold",
+          color: "#333",
+          marginTop: "20px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         Bio:
         <div style={{ fontSize: "16px", color: "#555", marginLeft: "10px" }}>
           {user.bio}
