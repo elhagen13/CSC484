@@ -4,25 +4,25 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Search, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import fakePeople, {Contact} from "@/fakePeople";
+import fakePeople, {UserMetadata} from "@/fakePeople";
 import SearchBar from "@/components/ui/search-bar";
 import UserProfile from "@/pages/UserProfile";
 
 const ContactsPage = () => {
   const navigate = useNavigate();
   const [query, setQuery] = React.useState("");
-  const [recentContacts] = React.useState<Contact[]>(fakePeople);
+  const [recentContacts] = React.useState<UserMetadata[]>(fakePeople);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
 
-  const navigateToProfile = (user: Contact) => {
+  const navigateToProfile = (user: UserMetadata) => {
     user.lastClicked = new Date();
     navigate(`/user/${user.id}/profile`);
   };
 
-  const navigateToMessage = (user: Contact) => {
+  const navigateToMessage = (user: UserMetadata) => {
     user.lastClicked = new Date();
     navigate(`/user/${user.id}/message`);
   };
