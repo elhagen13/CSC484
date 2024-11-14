@@ -1,6 +1,21 @@
-import {Citrus, Pi, Pyramid, Satellite, Scale, Server, Shrub, Squirrel, User, UtilityPole, Wine} from "lucide-react";
+import {
+  Citrus, PartyPopper,
+  Pi,
+  Puzzle,
+  Pyramid,
+  Satellite,
+  Scale,
+  Server,
+  Shrub,
+  Squirrel,
+  User,
+  UtilityPole,
+  Wine
+} from "lucide-react";
 
-interface Contact {
+export interface UserMetadata {
+    username: string,
+    password: string,
     id: number;
     firstName: string;
     lastName: string;
@@ -9,8 +24,10 @@ interface Contact {
     lastClicked: Date;
     avatar: JSX.Element;
 }
-export const fakePeople: Contact[] = [
+export const fakePeople: UserMetadata[] = [
     {
+      username: "test",
+      password: "test",
       id: 1,
       firstName: "Alice",
       lastName: "Johnson",
@@ -20,6 +37,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "tesssssssst",
+      password: "test",
       id: 2,
       firstName: "Bob",
       lastName: "Smith",
@@ -29,6 +48,8 @@ export const fakePeople: Contact[] = [
       avatar: <Citrus />
     },
     {
+      username: "test88",
+      password: "test",
       id: 3,
       firstName: "Charlie",
       lastName: "Brown",
@@ -38,6 +59,8 @@ export const fakePeople: Contact[] = [
       avatar: <Pi />
     },
     {
+      username: "test99",
+      password: "test",
       id: 4,
       firstName: "Diana",
       lastName: "Davis",
@@ -47,6 +70,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "test56",
+      password: "test",
       id: 5,
       firstName: "Ethan",
       lastName: "Miller",
@@ -56,6 +81,8 @@ export const fakePeople: Contact[] = [
       avatar: <Pyramid />
     },
     {
+      username: "test44",
+      password: "test",
       id: 6,
       firstName: "Fiona",
       lastName: "Williams",
@@ -65,6 +92,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "test33",
+      password: "test",
       id: 7,
       firstName: "George",
       lastName: "Taylor",
@@ -74,6 +103,8 @@ export const fakePeople: Contact[] = [
       avatar: <Satellite />
     },
     {
+      username: "test22",
+      password: "test",
       id: 8,
       firstName: "Hannah",
       lastName: "Anderson",
@@ -83,6 +114,8 @@ export const fakePeople: Contact[] = [
       avatar: <Squirrel />
     },
     {
+      username: "test11",
+      password: "test",
       id: 9,
       firstName: "Ivy",
       lastName: "Thomas",
@@ -92,6 +125,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "tester",
+      password: "test",
       id: 10,
       firstName: "Jack",
       lastName: "Jackson",
@@ -101,6 +136,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "testo",
+      password: "test",
       id: 11,
       firstName: "Katherine",
       lastName: "White",
@@ -110,6 +147,8 @@ export const fakePeople: Contact[] = [
       avatar: <UtilityPole />
     },
     {
+      username: "testing",
+      password: "test",
       id: 12,
       firstName: "Liam",
       lastName: "Harris",
@@ -119,6 +158,8 @@ export const fakePeople: Contact[] = [
       avatar: <Wine />
     },
     {
+      username: "tests",
+      password: "test",
       id: 1,
       firstName: "Mia",
       lastName: "Clark",
@@ -128,6 +169,8 @@ export const fakePeople: Contact[] = [
       avatar: <Scale />
     },
     {
+      username: "testtt",
+      password: "test",
       id: 1,
       firstName: "Noah",
       lastName: "Lewis",
@@ -137,6 +180,8 @@ export const fakePeople: Contact[] = [
       avatar: <Shrub />
     },
     {
+      username: "test5",
+      password: "test",
       id: 1,
       firstName: "Olivia",
       lastName: "Walker",
@@ -146,6 +191,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "test4",
+      password: "test",
       id: 1,
       firstName: "Paul",
       lastName: "Hall",
@@ -155,6 +202,8 @@ export const fakePeople: Contact[] = [
       avatar: <Server />
     },
     {
+      username: "test3",
+      password: "test",
       id: 1,
       firstName: "Quinn",
       lastName: "Young",
@@ -164,6 +213,8 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "test2",
+      password: "test",
       id: 1,
       firstName: "Rachel",
       lastName: "King",
@@ -173,22 +224,26 @@ export const fakePeople: Contact[] = [
       avatar: <User />
     },
     {
+      username: "tsest",
+      password: "test",
       id: 1,
       firstName: "Samuel",
       lastName: "Scott",
       interests: ["Technology", "Sports", "Arts"],
       bio: "adventure lover",
       lastClicked: new Date(),
-      avatar: <User />
+      avatar: <PartyPopper />
     },
     {
+      username: "tesddt",
+      password: "test",
       id: 1,
       firstName: "Tina",
       lastName: "Green",
       interests: ["Dance", "Arts", "Cooking"],
       bio: "adventure lover",
       lastClicked: new Date(),
-      avatar: <User />
+      avatar: <Puzzle />
     }
   ];
   
