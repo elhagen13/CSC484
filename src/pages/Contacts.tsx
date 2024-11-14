@@ -5,6 +5,7 @@ import { Search, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import fakePeople, {Contact} from "@/fakePeople";
+import SearchBar from "@/components/ui/search-bar";
 
 const ContactsPage = () => {
   const navigate = useNavigate();
@@ -45,23 +46,11 @@ const ContactsPage = () => {
         </div>
       </div>
 
-      <div style={{
-        position: 'relative'
-      }}>
-        <Search style={{
-          position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)',
-          color: '#fff', height: '16px', width: '16px'
-        }} />
-        <Input
-          value={query}
-          onChange={handleSearch}
-          placeholder="Search contacts..."
-          style={{
-            width: '100%', paddingLeft: '40px', paddingRight: '16px', color: "whitesmoke",
-            paddingTop: '8px', paddingBottom: '8px', borderRadius: '8px'
-          }}
-        />
-      </div>
+      <SearchBar
+        handleSearch={handleSearch}
+        query={query}
+        placeholder={"Search contacts..."}
+      />
 
       {query === "" && (
         <div style={{
