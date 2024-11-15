@@ -1,19 +1,19 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import React, {useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import avatarMap from "@/avatarOptions";
 import fakeData from "@/fakeData";
-import {ScrollArea} from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import TopHeader from "@/components/TopHeader";
-import {UserContext} from "@/components/UserProvider";
-import {User} from "lucide-react";
+import { UserContext } from "@/components/UserProvider";
+import { User } from "lucide-react";
 
 const interestOptions: string[] = [];
 
 // generate interests based on the event names in fakeData
-fakeData.forEach(category => {
-  category.type.forEach(type => {
+fakeData.forEach((category) => {
+  category.type.forEach((type) => {
     interestOptions.push(type.eventName);
   });
 });
@@ -22,18 +22,21 @@ function Interests() {
   const navigate = useNavigate();
   const location = useLocation();
   const { setUser } = useContext(UserContext)!; // Access UserContext to update the logged-in user
-  const { username, password, firstName, lastName, avatar, bio } = location.state;
+  const { username, password, firstName, lastName, avatarKey, bio } =
+    location.state;
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-
+  console.log("in locationstate: ", avatarMap[avatarKey]);
   const toggleInterest = (interest: string) => {
     setSelectedInterests((prev) =>
-      prev.includes(interest) ? prev.filter((i) => i !== interest) : [...prev, interest]
+      prev.includes(interest)
+        ? prev.filter((i) => i !== interest)
+        : [...prev, interest]
     );
   };
 
   const handleSubmit = () => {
-    const selectedAvatar = avatarMap[avatar] || <User />;
-
+    const selectedAvatar = avatarMap[avatarKey] || <User />;
+    console.log(selectedAvatar.key);
     const newUser = {
       username,
       password,
@@ -67,7 +70,7 @@ function Interests() {
           width: 330,
           height: 704,
           padding: 10,
-          marginTop: '-40px',
+          marginTop: "-40px",
           borderRadius: 1,
           overflow: "hidden",
           flexDirection: "column",
@@ -83,7 +86,7 @@ function Interests() {
             height: 40,
             color: "black",
             fontSize: 36,
-            marginTop: '0px',
+            marginTop: "0px",
             fontFamily: "Inter",
             fontWeight: "900",
             wordWrap: "break-word",

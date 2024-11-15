@@ -30,10 +30,10 @@ function Profile() {
   const { user, setUser } = useContext(UserContext)!;
   const [bio, setBio] = useState("");
   console.log(user?.username);
+  console.log(user?.avatar.key);
   const [selectedInterests, setSelectedInterests] = useState<string[]>(
     user?.interests || []
   );
-
   const toggleInterest = (interest: string) => {
     setSelectedInterests((prev) => {
       if (prev.includes(interest)) {
