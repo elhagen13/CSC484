@@ -1,12 +1,26 @@
+import React, { useState } from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 import TopHeader from "@/components/TopHeader";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useNavigate } from "react-router-dom";
+import avatarMap from "@/avatarOptions";
 
 function ProfilePhoto() {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/create-account/interests");
+  const location = useLocation();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [bio, setBio] = useState("");
+  const [selectedAvatar, setSelectedAvatar] = useState<string | null>(null);
+
+  const handleContinue = () => {
+    const { username, password } = location.state
+    console.log(selectedAvatar)
+    if (selectedAvatar) {
+      navigate("/create-account/interests", {
+        state: { username, password, firstName, lastName, bio, avatarKey: selectedAvatar },
+      });
+    }
   };
 
   return (
@@ -19,8 +33,7 @@ function ProfilePhoto() {
         display: "inline-flex",
       }}
     >
-      <TopHeader></TopHeader>
-
+      <TopHeader />
       <div
         style={{
           width: 330,
@@ -54,8 +67,21 @@ function ProfilePhoto() {
             gap: "10px",
           }}
         >
-          <text>name:</text>
-          <input
+          <text>First Name:</text>
+          <Input
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            style={{
+              backgroundColor: "#F3F3F3",
+              height: "50px",
+              borderRadius: "30px",
+              paddingLeft: "25px",
+            }}
+          />
+          <text>Last Name:</text>
+          <Input
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
             style={{
               backgroundColor: "#F3F3F3",
               height: "50px",
@@ -64,9 +90,32 @@ function ProfilePhoto() {
             }}
           />
         </form>
-        <text>upload profile picture:</text>
-        <div className="grid w-full max-w-sm items-center gap-1.5">
-          <Input id="picture" type="file" />
+        <text>Pick an Avatar:</text>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "10px",
+          }}
+        >
+          {Object.entries(avatarMap).map(([key, icon]) => (
+            <div
+              key={key}
+              onClick={() => setSelectedAvatar(key)}
+              style={{
+                width: "50px",
+                height: "50px",
+                borderRadius: "50%",
+                backgroundColor: selectedAvatar === key ? "#EFCA47" : "#F3F3F3",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                cursor: "pointer",
+              }}
+            >
+              {icon}
+            </div>
+          ))}
         </div>
         <form
           style={{
@@ -76,14 +125,15 @@ function ProfilePhoto() {
             gap: "10px",
           }}
         >
-          <text>bio:</text>
-          <input
-            type="text"
+          <text>Bio:</text>
+          <textarea
+            value={bio}
+            onChange={(e) => setBio(e.target.value)}
             style={{
               backgroundColor: "#F3F3F3",
-              height: "50px",
-              borderRadius: "30px",
-              paddingLeft: "25px",
+              height: "100px",
+              borderRadius: "15px",
+              padding: "15px",
             }}
           />
         </form>
@@ -112,7 +162,8 @@ function ProfilePhoto() {
               borderRadius: "30px",
               boxShadow: "2px 4px 10px rgba(0, 0, 0, 0.2)",
             }}
-            onClick={handleClick}
+            onClick={handleContinue}
+            disabled={!firstName || !lastName || !bio || !selectedAvatar}
           >
             continue →
           </Button>
@@ -121,4 +172,5 @@ function ProfilePhoto() {
     </div>
   );
 }
+
 export default ProfilePhoto;

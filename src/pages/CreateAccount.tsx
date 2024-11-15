@@ -1,15 +1,20 @@
 import TopHeader from "@/components/TopHeader";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 function CreateAccount() {
   const navigate = useNavigate();
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const handleClick = () => {
-    navigate("/create-account/profile-photo");
+    navigate("/create-account/profile-photo", { state: { username, password } });
   };
+
   return (
     <div>
-      <TopHeader></TopHeader>
+      <TopHeader />
       <div
         style={{
           width: "100%",
@@ -44,6 +49,8 @@ function CreateAccount() {
         >
           <text>username:</text>
           <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             style={{
               backgroundColor: "#F3F3F3",
               height: "50px",
@@ -54,6 +61,8 @@ function CreateAccount() {
           <text>password:</text>
           <input
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={{
               backgroundColor: "#F3F3F3",
               height: "50px",
@@ -87,4 +96,5 @@ function CreateAccount() {
     </div>
   );
 }
+
 export default CreateAccount;

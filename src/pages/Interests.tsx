@@ -1,17 +1,56 @@
-"use client";
-
+import { useNavigate, useLocation } from "react-router-dom";
+import React, {useContext, useState} from "react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import { Checkbox } from "@/components/ui/checkbox";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
+import avatarMap from "@/avatarOptions";
+import fakeData from "@/fakeData";
+import {ScrollArea} from "@/components/ui/scroll-area";
 import TopHeader from "@/components/TopHeader";
+import {UserContext} from "@/components/UserProvider";
+import {User} from "lucide-react";
+
+const interestOptions: string[] = [];
+
+// generate interests based on the event names in fakeData
+fakeData.forEach(category => {
+  category.type.forEach(type => {
+    interestOptions.push(type.eventName);
+  });
+});
 
 function Interests() {
   const navigate = useNavigate();
-  const handleClick = () => {
+  const location = useLocation();
+  const { setUser } = useContext(UserContext)!; // Access UserContext to update the logged-in user
+  const { username, password, firstName, lastName, avatar, bio } = location.state;
+  const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
+
+  const toggleInterest = (interest: string) => {
+    setSelectedInterests((prev) =>
+      prev.includes(interest) ? prev.filter((i) => i !== interest) : [...prev, interest]
+    );
+  };
+
+  const handleSubmit = () => {
+    const selectedAvatar = avatarMap[avatar] || <User />;
+
+    const newUser = {
+      username,
+      password,
+      id: 99,
+      firstName,
+      lastName,
+      bio,
+      lastClicked: new Date(),
+      interests: selectedInterests,
+      avatar: selectedAvatar,
+    };
+
+    setUser(newUser);
+    console.log("New user created:", newUser);
     navigate("/home");
   };
+
   return (
     <div
       style={{
@@ -71,167 +110,22 @@ function Interests() {
           style={{ borderColor: "#D1D1D1", scrollbarWidth: "thin" }}
         >
           <div className="p-3">
-            <h4
-              className="mb-4 text-2xl font-bold leading-none"
-              style={{ fontFamily: "Inter" }}
-            >
-              Outdoors
-            </h4>
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms1" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms1"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Hiking
-                </label>
+            {interestOptions.map((interest, index) => (
+              <div key={index} className="items-top flex space-x-2">
+                <Checkbox
+                  id={`interest-${index}`}
+                  onClick={() => toggleInterest(interest)}
+                />
+                <div className="grid gap-1.5 leading-none">
+                  <label
+                    htmlFor={`interest-${index}`}
+                    className="text-sm font-medium leading-none"
+                  >
+                    {interest}
+                  </label>
+                </div>
               </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms2" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms2"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Climbing
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms3" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms3"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Soccer
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms4" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms4"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Football
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms5" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms5"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Golf
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms6" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms6"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Tennis
-                </label>
-              </div>
-            </div>
-          </div>
-        </ScrollArea>
-        <ScrollArea
-          className="h-72 w-80 rounded-md border"
-          style={{ borderColor: "#D1D1D1", scrollbarWidth: "thin" }}
-        >
-          <div className="p-3">
-            <h4
-              className="mb-4 text-2xl font-bold leading-none"
-              style={{ fontFamily: "Inter" }}
-            >
-              Arts
-            </h4>
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms7" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms7"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Acrylic Painting
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms8" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms8"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Oil Painting
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms9" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms9"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Pottery
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms10" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms10"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Drawing
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms11" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms11"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Watercolor
-                </label>
-              </div>
-            </div>
-            <Separator className="my-2" />
-            <div className="items-top flex space-x-2">
-              <Checkbox id="terms12" />
-              <div className="grid gap-1.5 leading-none">
-                <label
-                  htmlFor="terms12"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  Scrapbooking
-                </label>
-              </div>
-            </div>
+            ))}
           </div>
         </ScrollArea>
       </div>
@@ -259,13 +153,14 @@ function Interests() {
               borderRadius: "30px",
               boxShadow: "2px 4px 10px rgba(0, 0, 0, 0.2)",
             }}
-            onClick={handleClick}
+            onClick={handleSubmit}
           >
-            continue →
+            Continue →
           </Button>
         </div>
       </div>
     </div>
   );
 }
+
 export default Interests;
