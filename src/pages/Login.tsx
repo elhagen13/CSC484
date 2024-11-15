@@ -1,16 +1,33 @@
 import TopHeader from "@/components/TopHeader";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import fakePeople, { UserMetadata } from "@/fakePeople";
+import React, { useContext } from "react";
+import {UserContext} from "@/components/UserProvider";
 
 function Login() {
   const navigate = useNavigate();
+  const { setUser } = useContext(UserContext)!; // Access UserContext to update the logged-in user
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const handleClick = () => {
-    navigate("/home");
+    const user: UserMetadata | undefined = fakePeople.find(
+      (person: { username: string; password: string }) =>
+        person.username === username && person.password === password
+    );
+
+    if (user) {
+      setUser(user);
+      navigate("/home");
+    } else {
+      alert("Invalid username or password");
+    }
   };
 
   return (
     <div>
-      <TopHeader></TopHeader>
+      <TopHeader />
       <div
         style={{
           width: "100%",
@@ -24,7 +41,7 @@ function Login() {
           padding: "80px",
         }}
       >
-        <text
+        <div
           style={{
             fontWeight: "bolder",
             fontSize: "30px",
@@ -33,7 +50,7 @@ function Login() {
           }}
         >
           LOGIN
-        </text>
+        </div>
         <form
           style={{
             width: "100%",
@@ -41,9 +58,12 @@ function Login() {
             flexDirection: "column",
             gap: "10px",
           }}
+          onSubmit={(e) => e.preventDefault()}
         >
-          <text>username:</text>
+          <label>username:</label>
           <input
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             style={{
               backgroundColor: "#F3F3F3",
               height: "50px",
@@ -51,9 +71,11 @@ function Login() {
               paddingLeft: "25px",
             }}
           />
-          <text>password:</text>
+          <label>password:</label>
           <input
             type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             style={{
               backgroundColor: "#F3F3F3",
               height: "50px",
@@ -88,4 +110,5 @@ function Login() {
     </div>
   );
 }
+
 export default Login;

@@ -23,6 +23,7 @@ import UserMessage from "./pages/UserMessage";
 import Header from "@/components/layout/Header";
 import NavigationBar from "@/components/layout/NavigationBar";
 import { Toaster } from "./components/ui/toaster";
+import {UserProvider} from "@/components/UserProvider";
 
 const AppContent = () => {
   const location = useLocation();
@@ -83,9 +84,11 @@ const AppContent = () => {
 // done separate like this because we need access to Router for location at time of useLocation() call
 const App = () => {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <UserProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </UserProvider>
   );
 };
 

@@ -24,6 +24,7 @@ export interface UserMetadata {
     lastClicked: Date;
     avatar: JSX.Element;
 }
+
 export const fakePeople: UserMetadata[] = [
     {
       username: "test",
