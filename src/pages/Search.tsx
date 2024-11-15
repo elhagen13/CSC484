@@ -162,14 +162,12 @@ function SearchPage() {
               {/* Hover effect */}
               <style>{`
                 .event-card:hover {
-                  background-color: #f0f0f0;
+                  background-color: #D8D8D8;
                   cursor: pointer;
-                  transform: scale(1.02); /* Reduced scaling */
+                  transform: scale(1); /* Reduced scaling */
                   color: #333; /* Change text color on hover */
                 }
-                .event-card:hover div {
-                  color: #333; /* Ensure text color changes */
-                }
+                
               `}</style>
             </Link>
           ))}
